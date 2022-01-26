@@ -5,6 +5,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS on)
 
 project (test)
 
+#=========================外部库
+find_package(Eigen3 3 REQUIRED )
+
 #=========================库
 include_directories(lib_src)
 aux_source_directory (lib_src/ LIB_SRC_LIST)
@@ -13,9 +16,9 @@ add_library (test_static STATIC ${LIB_SRC_LIST})# 静态库
 set (LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)# 输出路径
 
 #========================项目
-include_directories(include)
+include_directories(include ${EIGEN3_INCLUDE_DIR})
 aux_source_directory (src/ SRC_LIST)
 
 #========================可执行程序
 add_executable(main main.cpp ${SRC_LIST})
-target_link_libraries(main test_static)
+target_link_libraries(main test_static ${EIGEN3_LIBS})
