@@ -325,10 +325,7 @@ void triangulatePoints(const Eigen::Matrix<double, 3, 4> &T0, const Eigen::Matri
         A.row(2) = pt1[i].y * T1.row(2) - T1.row(1);
         A.row(3) = -pt1[i].x * T1.row(2) + T1.row(0);
         Eigen::Vector4d point = A.jacobiSvd(Eigen::ComputeFullV).matrixV().rightCols<1>();
-        // if (std::abs(point(3)) < FLT_EPSILON)
-        //     point(3) *= 10;
         Eigen::Vector3d pt(point(0) / point(3), point(1) / point(3), point(2) / point(3));
-        // std::cout << pt << std::endl;
         Points.push_back(pt);
     }
 }

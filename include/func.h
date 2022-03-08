@@ -14,6 +14,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/eigen.hpp>
 #include <ceres/ceres.h>
+// #include <ceres/gradient_checker.h>
 #include <ceres/rotation.h>
 
 void func();
